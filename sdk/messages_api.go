@@ -352,7 +352,7 @@ func (s *MessagesService) GetDirectMessages(queryParams *DirectMessagesQueryPara
 	}
 
 	result := response.Result().(*Messages)
-	if queryParams.Paginate == true {
+	if queryParams.Paginate {
 		items := s.messagesPagination(response.Header().Get("Link"), 0, 0)
 		for _, message := range items.Items {
 			result.AddMessage(message)
